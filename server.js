@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt'); // encrypts passwords by hashing
 const session = require('express-session'); // allow storage of individual pieces of information while in session
 require('./db/db');   // runs the db.js file 
 
+
 const app = express();
 const port = 3000;
 
