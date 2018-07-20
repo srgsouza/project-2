@@ -5,7 +5,7 @@ const request = require('request'); // makes http / https calls
 const bcrypt = require('bcrypt'); // encrypts passwords by hashing
 const session = require('express-session'); // allow storage of individual pieces of information while in session
 require('./db/db');   // runs the db.js file 
-require('./models/trails_data')
+
 
 const app = express();
 const port = 3000;
@@ -19,8 +19,8 @@ const usersController = require('./controllers/users');
 const bikesController = require('./controllers/bikes');
 const trailsController = require('./controllers/trails');
 
-// app.use('/users', usersController);
-// app.use('/bikes', bikesController);
+app.use('/users', usersController);
+app.use('/bikes', bikesController);
 app.use('/trails', trailsController);
 
 
