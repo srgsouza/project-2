@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Users</h1>
+
+    <ul>
+    <% for(let i = 0; i < users.length; i++) { %>
+      <li><a href="/bikes/<%=bikes[i].id%>"><%=bikes[i].name %></a></li>
+    <% } %>
+    </ul>
+
+
+
+    <div>
+      <a href="/bikes/new">Create New Bike</a>
+    </div>
+    <div>
+      <a href="/">Return to Home Page</a>
+    </div>
+
+  </body>
+</html>
