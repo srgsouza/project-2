@@ -8,22 +8,22 @@
 <body>
   
     <div class="container">
-        <h1>Bikes - All Bikes</h1>
+        <h1>Users - All Users</h1>
 
-        <% for(let i = 0; i < bikesList.length; i++) { %>
-            <a href="/bikes/<%= bikesList[i].id %>"> <h3> <%= bikesList[i].name %> </h3> </a>
-            <h4> <%= bikesList[i].frame %> </h4>
-            <h4> <%= bikesList[i].group %> </h4>
-            <h4> <%= bikesList[i].type %> </h4>
-            <form method="POST" action="/bikes/<%= bikesList[i].id %>?_method=DELETE">
+        <% for(let i = 0; i < usersList.length; i++) { %>
+            <a href="/users/<%= usersList[i].id %>"> <h3> <%= usersList[i].email %> </h3> </a>
+            <h4> <%= usersList[i].emails %></h4>
+            <h4> <%= usersList[i].password %> </h4>
+            <h4> <%= usersList[i].displayname %> </h4>
+            <form method="POST" action="/users/<%= usersList[i].id %>?_method=DELETE">
                 <button type="submit">Delete</button>
             </form>
                 
-            <a href="/bikes/<%= bikesList[i].id %>/edit"><button> Edit</button></a>
+            <a href="/users/<%= usersList[i].id %>/edit"><button> Edit</button></a>
         <% } %>
         </br>
         </br>
-        <a href="/bikes/new"> <button> Add New Bike </button> </a>
+        <a href="/users/new"> <button> Create New User </button> </a>
     </div>
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
