@@ -20,8 +20,8 @@ const bikesController = require('./controllers/bikes');
 const trailsController = require('./controllers/trails');
 
 app.use('/users', usersController);
-app.use('/bikes', bikesController);
-app.use('/trails', trailsController);
+// app.use('/bikes', bikesController);
+// app.use('/trails', trailsController);
 
 
 app.listen(port, () => {
