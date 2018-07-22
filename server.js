@@ -31,7 +31,7 @@ const trailsController = require('./controllers/trails');
 
 app.use('/users', usersController);
 // app.use('/bikes', bikesController);
-// app.use('/trails', trailsController);
+app.use('/trails', trailsController);
 
 
 app.listen(port, () => {

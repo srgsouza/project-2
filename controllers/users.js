@@ -58,7 +58,7 @@ router.get('/:id/edit', async (req, res) => {
 // logout
 router.get('/logout', function (req, res){
   req.logout();
-  res.redirect('users/logged')
+  res.send('looged out');
 });
 
 // Register new user - Insert new item in the DB
