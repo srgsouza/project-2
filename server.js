@@ -15,13 +15,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));  // allows alt methods such as "PUT" from the html form to call a corresponding route
 
 // require the controller(s)
-const usersController = require('./controllers/users');
-const bikesController = require('./controllers/bikes');
+// const usersController = require('./controllers/users');
+// const bikesController = require('./controllers/bikes');
 const trailsController = require('./controllers/trails');
 
-app.use('/users', usersController);
+// app.use('/users', usersController);
 // app.use('/bikes', bikesController);
-// app.use('/trails', trailsController);
+app.use('/trails', trailsController);
 
 
 app.listen(port, () => {

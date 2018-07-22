@@ -15,10 +15,10 @@
 	<div>
 	<ul>
 		<% for(let i = 0; i < trailsList.length ; i++) { %> <li>
-			<a href="/trails/<%=trailsList[i].id%>" <h4><%=trailsList[i].name%></h4></a>
-			<h3><%=trailsList[i].location%></h3>
-			<h3><%=trailsList[i].distance%></h3>
-			<h3><%=trailsList[i].level%></h3>
+			<a href="/trails/<%=trailsList[i].id%>" <h2>Name: <%=trailsList[i].name%></h2></a>
+			<h3>Location: <%=trailsList[i].location%></h3>
+			<h3>Distance: <%=trailsList[i].distance%></h3>
+			<h3>Level: <%=trailsList[i].level%></h3>
 			</li>
 
 		<%}%>
