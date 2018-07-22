@@ -15,7 +15,14 @@
 	</div>
 	
 	<div>
-	<a href="/trails/<%trail.id%>/edit">Edit</a>
+		<a href="/trails/<%= trail.id %>/edit">Edit</a>
+	</div>
+	<div>
+	 	<form method="POST" action="/trails/<%= trail.id %>?_method=DELETE">
+    <button type="submit">Delete</button>
+    </form>
+
+	</div
 
 
 <!-- jquery -->

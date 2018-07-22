@@ -8,7 +8,18 @@
 <body>
   
     <div class="container">
-        <h1>Edit Trails</h1>
+        <h1>Trail Edit Page</h1>
+
+    <div>
+    	<form action="/trails/<%= trail.id %>?_method=PUT" method=POST>
+    		Trail: <input type="text" name="name"/>
+    		Location: <input type="text" name="location"/>
+    		Distance: <input type="number" name="distance"/>
+    		Level: <input type="text" name="level"/>
+    		<button type="submit" value="Submit Change"> Edit trail </button>
+    	</form>
+
+  	</div>
 
     </div>
     <!-- jquery -->

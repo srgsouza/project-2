@@ -24,46 +24,9 @@ router.post('/', (req, res) => {
 	});
 });
 
-router.put('/:id', async (req, res) => {
-	try {
-		await Trail.findByIdAndUpdate(req.params.id, req.body, {new: true})
-		res.redirect('/trails');
-	} catch(err) {
-		console.log(error)
-	}
-});
 
-// router.get('/:id/edit', async (req, res) => {
-//   try {
-//     const data = await User.findById(req.params.id);
-//     res.render('trails/edit.ejs', {
-//       trail: data,
-//       id: req.params.id
-//     })
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
 
-router.get('/:id/edit', (req, res) => {
-	User.findById(req.params.id, (err, editTrail) => {
-		res.render("trails/edit.ejs", {
-			trail: editTrail
-		});
-	});
-});
 
-// router.get('/:id/edit', async (req, res) => {
-//   try {
-//     const data = await User.findById(req.params.id);
-//     res.render('users/edit.ejs', {
-//       user: data,
-//       id: req.params.id
-//     })
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
 
 router.get('/:id', async (req, res) => {
 	try {
@@ -73,6 +36,32 @@ router.get('/:id', async (req, res) => {
 			index: req.params.id
 		})
 	} catch (error) {
+		console.log(error)
+	}
+});
+
+router.get('/:id/edit', (req, res) => {
+	Trail.findById(req.params.id, (err, editTrail) => {
+		res.render("trails/edit.ejs", {
+			trail: editTrail
+		});
+	});
+});
+
+router.put('/:id', async (req, res) => {
+	try {
+		await Trail.findByIdAndUpdate(req.params.id, req.body, {new: true})
+		res.redirect('/trails');
+	} catch(err) {
+		console.log(error)
+	}
+});
+
+router.delete('/:id', async (req, res) => {
+	try {
+		await Trail.findByIdAndRemove(req.params.id)
+		res.redirect('/trails');
+	} catch(err) {
 		console.log(error)
 	}
 });
