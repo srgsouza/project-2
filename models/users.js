@@ -19,7 +19,8 @@ const UserSchema = new mongoose.Schema({
     require: true,
     minlength: 6
   },
-  displayname: String
+  displayname: String,
+  trails: [{type:Schema.Types.ObjectId, ref: 'Trail'}]
 });
 
 UserSchema.methods.validPassword = async function (password) {

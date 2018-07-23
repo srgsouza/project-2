@@ -8,6 +8,7 @@
 <body>
   
     <div class="container">
+        <h4>Logged in User: <%=message%> </h4>
         <h1>Users - All Users</h1>
         <h3> Todo List for the Users functionality / flow</h3>
         <ul>
@@ -19,9 +20,15 @@
             <li>Implement oauth Google etc </li>
         </ul>
 
+        
         <% for(let i = 0; i < usersList.length; i++) { %>
             <h4>Username (email): <a href="/users/<%= usersList[i].id %>">  <%= usersList[i].username %>  </a> </h4>
-            <h4> Display Name: <%= usersList[i].displayname %> </h4>                
+            <h4> Display Name: <%= usersList[i].displayname %> </h4>   
+            Favorites: 
+            <% for (let j = 0; j < usersList[i].trails.length; j++ ) { %>
+                <h4> <%=usersList[i].trails[j].name %></h4>
+            <% } %>
+                         
             <a href="/users/<%= usersList[i].id %>/edit"><button> Edit</button></a>
             <br>
             <br>
@@ -29,11 +36,16 @@
         </br>
         </br>
 
+
+            <br>
+            <br>
+
+
         <!-- Button for Login modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
             Login
         </button>
-
+        
         <!-- Button for Register modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
             Register

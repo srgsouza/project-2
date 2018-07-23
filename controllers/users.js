@@ -7,10 +7,15 @@ const User  = require('../models/users');
 
 // display the index page - show all users
 router.get('/', async (req, res) => {
+  let message = "";
+  // if (req.user.username) {
+  //   message = req.user
+  // }
   try {
-    const data = await User.find({});
+    const data = await User.find({}).populate('trails');
     res.render('users/index.ejs', { 
-      "usersList": data
+      "usersList": data,
+      message: message
     });
   } catch (error) {
     console.log(error);
@@ -93,6 +98,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.post('/u')
 // Delete an item.  Takes an id , as an argument, from a delete form/button, such as the one on the index.ejs page
 router.delete('/:id', async (req, res) => {
   try {

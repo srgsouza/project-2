@@ -6,7 +6,10 @@ const Trail = require("../models/trails")
 router.get('/', async (req, res) => {
 	try {
 		const data = await Trail.find({});
-		res.render('trails/index.ejs', { "trailsList": data });
+		res.render('trails/index.ejs', { 
+			"trailsList": data,
+			"user": req.user.id 
+		});
 	} catch (error) {
 		console.log(error);
 	}
@@ -24,6 +27,22 @@ router.post('/', (req, res) => {
 	});
 });
 
+router.post('/:id/like', async (req, res) => {
+	try {
+		console.log(req.user);
+		console.log("Got in the post /:id/like route");
+		await req.user.trails.push(req.params.id);
+		await req.user.save();
+		console.log(req.user.trails);
+		
+		res.redirect('/users')
+	// const likedTrail = await Trail.create(req.user)
+	} catch (error) {
+		console.log(error);
+		
+	}
+
+})
 
 
 
