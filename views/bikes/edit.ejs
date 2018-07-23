@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1> Bike Edit Page</h1>
+      <a href="/">Return to Home Page</a>
+
+      <form action="/bikes/<%=bikes.id%>?_method=PUT" method="POST">
+        <input type="text" name="Bike Name" value="<%=bikes.name%>"><br>
+        <button type="submit">Change Bike</button>
+      </form>
+  </body>
+
+  <!-- ask about how to also change the password from here -->
+</html>
