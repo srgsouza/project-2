@@ -11,9 +11,9 @@ const app = express();
 const port = 3000;
 
 // middleware
+app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));  // allows alt methods such as "PUT" from the html form to call a corresponding route
-
 // require the controller(s)
 // const usersController = require('./controllers/users');
 // const bikesController = require('./controllers/bikes');
