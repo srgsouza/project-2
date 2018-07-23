@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
     }
   })
 })
-//  after the create call. if 
+//  after the create call. if
 // // Create new - Insert new item in the DB
 // router.post('/', async (req, res) => {
 //   await Bike.create(req.body, (err, data) => {
