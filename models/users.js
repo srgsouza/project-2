@@ -2,12 +2,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// const userSchema = new Schema({
-//   email: String,  // add validation ie minlength etc. also add validation in the client (via javascript validation)
-//   password: String,
-//   displayname: String
-// });
-
 const validator = require('validator'); // npm library that handles validation - ie email has proper format.
 const bcrypt = require('bcryptjs'); // used for the hashing of passwords
 

@@ -29,17 +29,10 @@ router.get('/new', (req, res) => {
   res.render('users/new.ejs');
 });
 
-// find user by ID and render the show.ejs page
-router.get('/:id', async (req, res) => {
-  try {
-   const data = await User.findById(req.params.id);
-    res.render('users/show.ejs', {
-      user: data,
-      index: req.params.id
-    })
-  } catch (error) {
-    console.log(error);
-  }
+// logout
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.send('looged out');
 });
 
 // render the edit page (pre-filled with existing data)
@@ -55,11 +48,19 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
-// logout
-router.get('/logout', function (req, res){
-  req.logout();
-  res.send('looged out');
+// find user by ID and render the show.ejs page
+router.get('/:id', async (req, res) => {
+  try {
+    const data = await User.findById(req.params.id);
+    res.render('users/show.ejs', {
+      user: data,
+      index: req.params.id
+    })
+  } catch (error) {
+    console.log(error);
+  }
 });
+
 
 // Register new user - Insert new item in the DB
 router.post('/register', async (req, res) => {
