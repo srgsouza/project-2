@@ -3,7 +3,7 @@ const User = require('../models/users');
 
 passport.use(new LocalStrategy(
     function (username, password, done) {
-        console.log(`INSIDE the Passport STRAtEGY - Trying to login ${username} with ${password}`);
+        console.log(`INSIDE the Passport STRAtEGY - Trying to login ${username} with ${password} - did work?`);
         
         User.findOne({ username: username }, function (err, user) {
             console.log(`Successfully found user ${user.username}`);
@@ -16,6 +16,8 @@ passport.use(new LocalStrategy(
             // For our case, it will be a mongoose method defined in the users model
             if (!user.validPassword(password)) {
                 return done(null, false, { message: 'Incorrect password.' });
+                console.log('Incorrect password');
+                
             }
             console.log("Everything Worked !!!!");
             
