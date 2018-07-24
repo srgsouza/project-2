@@ -6,7 +6,8 @@ const Trail = require("../models/trails")
 router.get('/', async (req, res) => {
 	try {
 		const data = await Trail.find({});
-		res.render('trails/index.ejs', { "trailsList": data });
+		res.render('trails/index.ejs', 
+		{ "trailsList": data });
 	} catch (error) {
 		console.log(error);
 	}
