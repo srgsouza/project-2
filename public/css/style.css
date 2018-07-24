@@ -1,6 +1,6 @@
 .container {
 	font-family: 'Lato', sans-serif;
-	background-color: #ade550;
+	background-color: #DCDCDC;
 	height: 800px;
 	width: 500px;
 	justify-content: center;
@@ -32,6 +32,11 @@ ul {
 }
 
 .listScroll {
- height: 400px;
+ height: 600px;
  overflow-y: scroll;
+}
+
+header {
+	margin-top: 15px;
+	margin-bottom: 15px;
 }

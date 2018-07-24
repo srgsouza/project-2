@@ -12,10 +12,17 @@
 <div class="container">
 	 
 	 <% include ../partials/_navbar.ejs %>
-  
-  <div>
+
+	 <div class="TrailforksWidgetMap" data-w="800px" data-h="400px" data-rid="1" data-maptype="trailforks" data-trailstyle="difficulty" data-controls="1" data-list="0" data-dml="1" data-layers="labels,poi,directory,region" data-z="" data-lat="" data-lon="" data-hideunsanctioned="0"></div>
+
+
+<script type="text/javascript">
+var script = document.createElement("script"); script.setAttribute("src", "https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js"); document.getElementsByTagName("head")[0].appendChild(script); var widgetCheck = false;
+</script>
+
+  <header>
   	<h1>All Trails</h1>
-	</div>
+	</header>
 
 	<div class="listScroll">
 		<ul>
@@ -44,9 +51,9 @@
 		</ul>
 	</div>
 
- 	<div>
+ 	<footer>
  		<button><a href="trails/new">Add a new trail</a></button>
-	</div>
+	</footer>
 			 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
