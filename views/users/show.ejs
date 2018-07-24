@@ -7,12 +7,16 @@
 </head>
 <body>
   <div class="container">
-  <h1>User Details Page</h1>
-    <%= user.email %> </br>
-    <%= user.password %> </br>
-    <%= user.displayname %> </br>
+  <% include ../partials/_navbar.ejs %>
+  <h3> User Details</h3>
+    <h4>Username (email): <%= user.username %></h4> 
+    <!-- <%= user.password %> </br> -->
+    <h4>Display Name: <%= user.displayname %></h4>
 
-    <a href="/users/<%= index %>/edit"> Edit </a>
+    <a href="/users/<%= index %>/edit"> <button>Edit</button>  </a>
+    <form method="POST" action="/users/<%= user.id %>?_method=DELETE">
+      <button type="submit">Delete</button>
+    </form>
 
   </div>
     <!-- jquery -->

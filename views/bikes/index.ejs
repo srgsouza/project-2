@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Available Mountain Bikes</h1>
+
+    <ul>
+    <% for(let i = 0; i < bikes.length; i++) { %>
+      <li><a href="/bikes/<%=bikes[i].id%>"><%=bikes[i].name %></a></li>
+    <% } %>
+    </ul>
+
+
+    <div>
+      <a href="/bikes/new">Create New Bike</a>
+    </div>
+    <div>
+      <a href="/bikes">Return to Home Page</a>
+    </div>
+
+  </body>
+</html>

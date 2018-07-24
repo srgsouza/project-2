@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Bike Name: <%=bike.name%></h1>
+    <h1>Type: <%=bike.type%></h1>
+
+    <div>
+      <button><a href="/bikes/<%=bike.id%>/edit">Edit Bike</a></button>
+    </div>
+
+    <div>
+      <form action="/bikes/<%=bike.id%>?_method=DELETE" method="post">
+        <button>Delete Bike</button>
+      </form>
+    </div>
+
+
+    <div>
+      <a href="/bikes"> Return to home page</a>
+    </div>
+
+  </body>
+</html>

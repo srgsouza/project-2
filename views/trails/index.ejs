@@ -6,35 +6,49 @@
 <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-
-
 </head>
 <body>
   
 <div class="container">
+	 
 	 <% include ../partials/_navbar.ejs %>
+  
   <div>
-  <h1>All Trails</h1>
-  <div>
+  	<h1>All Trails</h1>
+	</div>
 
- 
-	<div>
-	<ul>
-		<% for(let i = 0; i < trailsList.length ; i++) { %> <li>
-			<a href="/trails/<%=trailsList[i].id%>" <h2>Name: <%=trailsList[i].name%></h2></a>
-			<h3>Location: <%=trailsList[i].location%></h3>
-			<h3>Distance: <%=trailsList[i].distance%></h3>
-			<h3>Level: <%=trailsList[i].level%></h3>
-			</li>
-
-		<%}%>
-	</ul>
- 	<div>
+	<div class="listScroll">
+		<ul>
+			<% for(let i = 0; i < trailsList.length ; i++) { %> <li>
+				<a href="/trails/<%=trailsList[i].id%>"> <h3> Name: <%=trailsList[i].name%></h3> </a> 
+		
+				<h4>Location: <%=trailsList[i].location%></h4>
+				<h4>Distance: <%=trailsList[i].distance%></h4>
+				<h4>Level:<%trailsList[i].level%></h4>
+					<% if(trailsList[i].level == 1) { %>
+					<img src="/images/green_circle.png">
+					<%}%>
+					<% if(trailsList[i].level == 2) { %>
+					<img src="/images/blue_rectangle.png">
+					<%}%>
+					<% if(trailsList[i].level == 3) { %>
+					<img src="/images/black_diamond.png">
+					<%}%>
+				</li>
+			</br>
+				<form action="/trails/<%=trailsList[i].id%>/like" method="POST">
+					<button type="submit" value="<%=trailsList[i].id%>">Save Favorite</button>
+				</form>
+			</br>
+			<%}%>
+		</ul>
+	</div>
 
  	<div>
  		<button><a href="trails/new">Add a new trail</a></button>
 	</div>
-		   
+			 
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- bootstrap bundle -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
