@@ -75,7 +75,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// <<<<<<< HEAD
+
 // Login user - using Passport JS
 router.post('/login', (req, res, next) => {
   // passport.authenticate returns a callback function
@@ -88,8 +88,7 @@ router.post('/login', (req, res, next) => {
     
 })
 
-// =======
-// >>>>>>> e6fe5fc3b5d4c1abdf99a4235f568bce15e8abe8
+
 // Register new user - Insert new item in the DB
 router.post('/register', async (req, res) => {
   try {
