@@ -41,7 +41,6 @@ router.post('/:id/like', async (req, res) => {
 		console.log(error);
 		
 	}
-
 })
 
 
