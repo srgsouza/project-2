@@ -8,11 +8,11 @@
 <body>
   
   <div class="container">
+    <% include ../partials/_navbar.ejs %>
     <h1>Users - Edit </h1>
 
     <form method="POST" action="/users/<%= id %>?_method=PUT">
       Email (username): <input type="text" name="username" value="<%= user.username%> "> </br>
-      Password: <input type="password" name="password" value=""> </br>
       Display Name: <input type="text" name="displayname" value="<%= user.displayname %> "> </br>
       <input type="submit" value="Submit Change">
     </form>
