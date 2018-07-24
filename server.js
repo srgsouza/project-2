@@ -11,8 +11,6 @@ require('./db/db');   // runs the db.js file
 require('./passport/serializing');
 require('./passport/local-config');
 
-
-
 const app = express();
 const port = 3000;
 

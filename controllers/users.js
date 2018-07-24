@@ -7,16 +7,16 @@ const User  = require('../models/users');
 
 // display the index page - show all users
 router.get('/', async (req, res) => {
-  let message = "";
-  // if (req.user === undefined) {
-  //   console.log(undefined);
+  let message = null;
+  if (req.user === undefined) {
+    console.log(undefined);
     
-  // } else {
-  //   message = req.user
-  // }
+  } else {
+    message = req.user.username;
+  }
 
   try {
-    const data = await User.find({}).populate('trails');
+    const data = await User.find({}).populate('trails').populate('bikes');
     res.render('users/index.ejs', { 
       "usersList": data,
       message: message
@@ -39,7 +39,8 @@ router.get('/login', function (req, res) {
 // logout
 router.get('/logout', function (req, res) {
   req.logout();
-  res.send('looged out');
+  res.redirect('/users');
+  // res.send('looged out');
 });
 
 router.get('/logged', (req, res) => {
