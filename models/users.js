@@ -1,34 +1,48 @@
-// Require mongoose
-// Declare mongoose Schema 
-// Use mongoose schema (declare key/pair data)
-// Create a mongoose model from such schema 
-// export model
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// const bikeSchema = new Schema({
-//   name: String,  // add validation ie minlength etc. also add validation in the client (via javascript validation)
-//   frame: String,
-//   size: String,
-//   group: String,
-//   type: String,
-// });
 
-const userSchema = new Schema({
-  username: String,  // add validation ie minlength etc. also add validation in the client (via javascript validation)
-  password: String,
-  displayname: String
+const validator = require('validator'); // npm library that handles validation - ie email has proper format.
+const bcrypt = require('bcryptjs'); // used for the hashing of passwords
+
+// This UserSchema variable stores the schema (properties) for the user - using this since we can't add methods to the User model directly
+const UserSchema = new mongoose.Schema({
+  username: {
+    type: String, required: true, minlength: 1, trim: true, unique: true,
+    validate: {
+      validator: validator.isEmail,  // abobe validator block can be writen like this instead
+      message: '{value} is not a valid email'
+    }
+  },
+  password: {
+    type: String,
+    require: true,
+    minlength: 6
+  },
+  displayname: String,
+  trails: [{type:Schema.Types.ObjectId, ref: 'Trail'}]
 });
 
+UserSchema.methods.validPassword = async function (password) {
+  // console.log("Testing this password: " + password)
+  const valid = await bcrypt.compare(password, this.password);
+  return valid;
+}
 
-const User = mongoose.model('User', userSchema);  // this is the model
+UserSchema.pre('save', async function (next) {
+  const existingUser = await User.findOne({username: this.username});
+  if(!existingUser) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
+})
+
+
+// create/register the mongoose model
+const User = mongoose.model('User', UserSchema);  // this is the model
 
 // export the model
 module.exports = User;
 
 
 
-
-// #########
-
-// UserSchema.pre('save')
