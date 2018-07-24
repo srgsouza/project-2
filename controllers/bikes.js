@@ -27,10 +27,18 @@ router.post('/', (req, res) => {
     console.log(createdBike, ' this is the createdBike');
     res.redirect('/bikes');
   });
-
-
 });
 
+router.post('/:id/like', async (req, res) => {
+  try {
+    console.log(req.user);
+    await req.user.bikes.push(req.params.id);
+    await req.user.save();
+    res.redirect('/users');
+  } catch (error) { 
+    console.log(error);
+  }
+})
 // VERSION 1
 //display the create page for when creating a new username
 router.get('/new', (req, res) => {

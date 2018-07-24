@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 		const data = await Trail.find({});
 		res.render('trails/index.ejs', { 
 			"trailsList": data,
-			"user": req.user.id 
+			// "user": req.user.id 
 		});
 	} catch (error) {
 		console.log(error);

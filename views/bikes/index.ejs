@@ -10,6 +10,9 @@
     <ul>
     <% for(let i = 0; i < bikes.length; i++) { %>
       <li><a href="/bikes/<%=bikes[i].id%>"><%=bikes[i].name %></a></li>
+      <form action="/bikes/<%=bikes[i].id%>/like" method="post">
+        <button type="submit" value="<%=bikes[i].id%>"> Like </button>
+      </form>
     <% } %>
     </ul>
 

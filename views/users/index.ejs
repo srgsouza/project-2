@@ -26,9 +26,14 @@
         <% for(let i = 0; i < usersList.length; i++) { %>
             <h4>Username (email): <a href="/users/<%= usersList[i].id %>">  <%= usersList[i].username %>  </a> </h4>
             <h4> Display Name: <%= usersList[i].displayname %> </h4>   
-            Favorites: 
+            Liked Trails: 
             <% for (let j = 0; j < usersList[i].trails.length; j++ ) { %>
                 <h4> <%=usersList[i].trails[j].name %></h4>
+            <% } %>
+            <br>
+            Liked Bikes:
+            <% for (let k = 0; k < usersList[i].bikes.length; k++ ) { %>
+                <h4> <%=usersList[i].bikes[k].name %></h4>
             <% } %>
                          
             <a href="/users/<%= usersList[i].id %>/edit"><button> Edit</button></a>
@@ -41,82 +46,6 @@
 
             <br>
             <br>
-
-
-        <!-- Button for Login modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
-            Login
-        </button>
-        
-        <!-- Button for Register modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
-            Register
-        </button>
-        
-        <!-- Login Modal -->
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">User Login</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-signin" method="POST" action="/users/login">
-                            <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                            <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
-                            <label for="inputEmail" class="sr-only">Email address</label>
-                            <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                            <label for="inputPassword" class="sr-only">Password</label>
-                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                            <div class="checkbox mb-3">
-                                <label>
-                                    <input type="checkbox" value="remember-me"> Remember me
-                                </label>
-                            </div>
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                            <p class="mt-5 mb-3 text-muted">&copy; 2018 KMS</p>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Register Modal -->
-        <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">User Registration</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-signin" method="POST" action="/users/register">
-                            <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                            <h1 class="h3 mb-3 font-weight-normal">Please Register</h1>
-                            <label for="inputEmail" class="sr-only">Email address</label>
-                            <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                            <label for="inputPassword" class="sr-only">Password</label>
-                            <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                            <label for="inputDisplayName" class="sr-only">Password</label>
-                            <input type="displayname" name="displayname" id="inputDisplayName" class="form-control" placeholder="DisplayName" required>
-                            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-                            <p class="mt-5 mb-3 text-muted">&copy; 2018 KMS</p>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
     <!-- jquery -->

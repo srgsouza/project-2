@@ -10,7 +10,6 @@ require('./db/db');   // runs the db.js file
 require('./passport/serializing');
 require('./passport/local-config');
 
-
 const app = express();
 const port = 3000;
 
@@ -28,11 +27,11 @@ app.use(passport.session());
 
 // require the controller(s)
 const usersController = require('./controllers/users');
-// const bikesController = require('./controllers/bikes');
+const bikesController = require('./controllers/bikes');
 const trailsController = require('./controllers/trails');
 
 app.use('/users', usersController);
-// app.use('/bikes', bikesController);
+app.use('/bikes', bikesController);
 app.use('/trails', trailsController);
 
 
