@@ -1,8 +1,35 @@
 .container {
 	font-family: 'Lato', sans-serif;
-	background-color: yellow;
-	height: 500px;
+	background-color: #ade550;
+	height: 800px;
 	width: 500px;
 	justify-content: center;
 	text-align: center;
+}
+.bar {
+	background-color: #ade550;
+}
+
+.navbar-brand {
+	background: url('/images/test3.png'); 
+	height: 100px;
+	width: 100px;
+	background-repeat: no-repeat;
+}
+
+.hero {
+	background: url('/images/bikephoto.png');
+	height: 450px;
+	width: 800px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	justify-content: center;
+	margin-left: 120px;
+	margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
