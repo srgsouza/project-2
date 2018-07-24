@@ -66,7 +66,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
 // Register new user - Insert new item in the DB
 router.post('/register', async (req, res) => {
   try {
