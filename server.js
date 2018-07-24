@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs'); // encrypts passwords by hashing
 const session = require('express-session'); // allow storage of individual pieces of information while in session
 
 const passport = require('passport');
+require('dotenv').config();
 require('./db/db');   // runs the db.js file 
 require('./passport/serializing');
 require('./passport/local-config');
