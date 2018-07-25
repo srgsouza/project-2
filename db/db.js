@@ -19,3 +19,5 @@ db.on('error', (err) => {
   console.log('DB error: ' + err);
 
 })
+
+module.exports = url;

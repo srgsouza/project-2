@@ -8,13 +8,9 @@ const User  = require('../models/users');
 // display the index page - show all users
 router.get('/', async (req, res) => {
   let message = null;
-  if (req.user === undefined) {
-    console.log(undefined);
-    
-  } else {
+  if (req.user !== undefined) {
     message = req.user.username;
   }
-
   try {
     const data = await User.find({}).populate('trails').populate('bikes');
     res.render('users/index.ejs', { 
@@ -40,7 +36,6 @@ router.get('/login', function (req, res) {
 router.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/users');
-  // res.send('looged out');
 });
 
 router.get('/logged', (req, res) => {
@@ -76,7 +71,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
 // Login user - using Passport JS
 router.post('/login', (req, res, next) => {
   // passport.authenticate returns a callback function
@@ -85,10 +79,7 @@ router.post('/login', (req, res, next) => {
     successRedirect: '/users', 
     failureRedirect: '/users/login'
   }) (req, res, next);
-  console.log(req.user);
-    
 })
-
 
 // Register new user - Insert new item in the DB
 router.post('/register', async (req, res) => {
