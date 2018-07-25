@@ -1,13 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const Trail = require("../models/trails")
+const request = require('request');
 
 // router.post('/search', (req, res) => {
 // 	let mountainBikeProject = "200320520-bb520cea5200b21d7530c95bf2166f64";
 // 	request("https://www.mtbproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200320520-bb520cea5200b21d7530c95bf2166f64")
 // }
-
-
 
 router.get('/', async (req, res) => {
 	try {
@@ -28,6 +27,17 @@ router.post('/', (req, res) => {
 	Trail.create(req.body, (err, createdTrail) => {
 		console.log(createdTrail);
 		res.redirect('/trails')
+	});
+});
+
+router.get('/search', (req, res) => {
+	let mountainBikeProject = "200320520-bb520cea5200b21d7530c95bf2166f64";
+	request({
+		url: `https://www.mtbproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=200320520-bb520cea5200b21d7530c95bf2166f64`
+	}, (err, response, body) => {
+		console.log(err);
+		res.render('trails/search.ejs',
+			{ body: body });
 	});
 });
 

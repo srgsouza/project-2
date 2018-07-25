@@ -8,7 +8,8 @@ const session = require('express-session'); // allow storage of individual piece
 const passport = require('passport');
 require('dotenv').config();
 require('./db/db');   // runs the db.js file 
-const {store} = require('./db/mongo_session'); // mongo session config file
+// require('./db/mongo_session');
+const store = require('./db/mongo_session'); // mongo session config file
 require('./passport/serializing');
 require('./passport/local-config');
 
@@ -20,10 +21,7 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());   
 app.use(methodOverride('_method'));  // allows alt methods such as "PUT" from the html form to call a corresponding route
-// app.use(session({
-//   secret: "keepitsecretkeepitsafe",
-//   saveUninitialized: false
-// }));
+
 app.use(require('express-session')({
   secret: 'This is a secret',
   cookie: {
