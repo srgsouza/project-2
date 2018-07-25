@@ -21,15 +21,14 @@ ul {
 }
 
 .listScroll {
-/* border: 20px solid black*/	
  height: 600px;
  overflow-y: scroll;
  
 }
 
-.body {
+.main {
  border-radius: 67px;
- border: 2px solid rgba(133,191,70, 0.7);
- opacity: ;	
+ border: 4px solid rgba(133,191,70, 0.9);
+ margin-top: 50px;	
 }
 

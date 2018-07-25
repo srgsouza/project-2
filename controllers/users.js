@@ -104,6 +104,7 @@ router.post('/location', (req, res) => {
         url: `https://www.mtbproject.com/data/get-trails?lat=${results.latitude}&lon=${results.longitude}&maxDistance=10&key=200320520-bb520cea5200b21d7530c95bf2166f64`
       }, (err, response, body) => {
         console.log(err);
+        body = JSON.parse(body);
         res.render('trails/search.ejs',
           { body: body });
       });
