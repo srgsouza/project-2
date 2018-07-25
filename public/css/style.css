@@ -34,4 +34,7 @@ ul {
 
 .stats {
 	border: 3px solid black;
+	justify-content: center;
+	height: 400px;
+	width: 400px;
 }

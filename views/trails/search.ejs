@@ -23,9 +23,10 @@
 		<ul>
 
 			<% for (let i = 0; i < body.trails.length; i++) {%> <li>
-				<%=body.trails[i].name%> </br>
-				<%=body.trails[i].summary%> </br>
-				<%=body.trails[i].difficulty%> </br>
+				<h2><%=body.trails[i].name%></h2> 
+				<p>
+				<%=body.trails[i].summary%></br> 
+				<%=body.trails[i].difficulty%>  </br>
 				<%=body.trails[i].location%> </br>
 				<%=body.trails[i].length%> </br>
 				<%=body.trails[i].ascent%> </br>
@@ -33,7 +34,9 @@
 				<%=body.trails[i].high%> </br>
 				<%=body.trails[i].low%> </br>
 				<%=body.trails[i].length%> </br>
+			</p>
 			</li>
+		
 			<%}%>
 			
 			</ul>
