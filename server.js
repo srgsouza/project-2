@@ -48,6 +48,10 @@ app.use('/users', usersController);
 app.use('/bikes', bikesController);
 app.use('/trails', trailsController);
 
+app.get('/', (req, res) => {
+	res.render('index.ejs');
+});
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
