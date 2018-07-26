@@ -2,22 +2,25 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const router = express.Router();
 const passport = require('passport');
+const request = require('request');
 
 const User  = require('../models/users');
+const geocode = require('../api/geocode');
+const weather = require('../api/weather');
 
 // display the index page - show all users
 router.get('/', async (req, res) => {
-
-  let message = null;
+  let username = null;
   if (req.user !== undefined) {
-    message = req.user.username;
+    username = req.user.username;
   }
+  // console.log(session);
+
   try {
     const data = await User.find({}).populate('trails').populate('bikes');
     res.render('users/index.ejs', {
-
       "usersList": data,
-      message: message
+      username: username
     });
   } catch (error) {
     console.log(error);
@@ -60,6 +63,27 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
+// Render user profile TODO
+router.get('/:id/profile', async (req, res) => {
+  let username = null;
+  if (req.user !== undefined) {
+    username = req.user.username;
+  }
+  // console.log(session);
+  try {
+    // const data0 = await User.findOne({username:req.params.})
+    const data = await User.findById(req.params.id).populate('trails').populate('bikes');
+    console.log(data);
+
+    res.render('users/profile.ejs', {
+      "usersList": data,
+      username: username
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // find user by ID and render the show.ejs page
 router.get('/:id', async (req, res) => {
   try {
@@ -72,6 +96,7 @@ router.get('/:id', async (req, res) => {
     console.log(error);
   }
 });
+
 
 // Login user - using Passport JS
 router.post('/login', (req, res, next) => {

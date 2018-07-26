@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<link rel="stylesheet" type="text/css" href="/css/style.css"/>
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+	 <nav>
+	 <% include ../partials/_navbar.ejs %>
+	 </nav>
+
+	<div class="announcement">
+		<h1>TRAILS</h1>
+	</div>
+	
+	<div class="listScroll">
+
+	<div class="row card-group">
+		<% for (let i = 0; i < body.trails.length; i++) {%>
+ 			<div class="col-6-card" style="width: 27rem";>
+  			<div class="card-body">
+    			<h5 class="card-title"><%=body.trails[i].name%></h5>
+    			<p class="card-text">
+    			Summary: <%=body.trails[i].summary%></br> 
+ 					Difficulty: <%body.trails[i].difficulty%>
+ 						<% if(body.trails[i].difficulty == 'green' || body.trails[i].difficulty == 'greenBlue') { %>
+					<img src="/images/green_circle.png">
+					<%}%>
+					<% if(body.trails[i].difficulty == 'blue' || body.trails[i].difficulty == 'blueBlack') { %>
+					<img src="/images/blue_rectangle.png">
+					<%}%>
+					<% if(body.trails[i].difficulty == 'black') { %>
+					<img src="/images/black_diamond.png">
+					<%}%>  </br>
+ 					Location: <%=body.trails[i].location%> </br>
+ 					Length: <%=body.trails[i].length%> </br>
+ 					Ascent: <%=body.trails[i].ascent%> </br>
+ 					Descent: <%=body.trails[i].descent%> </br>
+ 					Elevation High: <%=body.trails[i].high%> </br>
+ 					Elevation Low: <%=body.trails[i].low%> </br> 		
+    			</p>
+          <form action="/trails/<%=body.trails[i].id%>/like" method="POST">
+            <button type="submit" value="<%=body.trails[i].id%>">Save Favorite</button>
+          </form>
+    		</div>
+    	</div>
+    <%}%>
+ 	</div>
+ </div>
+ 	
+ </div>
+
+
+
+
+			
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- bootstrap bundle -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+
+</body>
+</html>
