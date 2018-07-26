@@ -6,10 +6,18 @@ const bcrypt = require('bcryptjs'); // encrypts passwords by hashing
 const session = require('express-session'); // allow storage of individual pieces of information while in session
 
 const passport = require('passport');
+
 require('dotenv').config();
-require('./db/db');   // runs the db.js file 
-// require('./db/mongo_session');
-const store = require('./db/mongo_session'); // mongo session config file
+require('./db/db');   // runs the db.js file
+const {store} = require('./db/mongo_session'); // mongo session config file
+
+const Bike = require('./models/bikes');
+const bikes = require('./input_files/bikes_data');
+
+for(let i = 0; i < bikes.length; i++) {
+  Bike.create(bikes[i]);
+}
+
 require('./passport/serializing');
 require('./passport/local-config');
 const geocode = require('../api/geocode');
@@ -21,7 +29,7 @@ const port = 3000;
 // middleware
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());   
+app.use(bodyParser.json());
 app.use(methodOverride('_method'));  // allows alt methods such as "PUT" from the html form to call a corresponding route
 
 app.use(require('express-session')({
@@ -45,6 +53,10 @@ app.use((req, res, next) => {
 const usersController = require('./controllers/users');
 const bikesController = require('./controllers/bikes');
 const trailsController = require('./controllers/trails');
+
+// app.use('/users', usersController);
+app.use('/bikes', bikesController);
+// app.use('/trails', trailsController);
 
 app.use('/users', usersController);
 app.use('/bikes', bikesController);
