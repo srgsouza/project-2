@@ -23,13 +23,15 @@ router.get('/index', (req, res) => {
 
 // display the create page for when creating a new username
 router.get('/new', (req, res) => {
-  User.find({}, (err, Bike) => {
+  Bike.find({}, (err, Bike) => {
     res.render('bikes/new.ejs', {
       // the variable on the left of the colon is
       // passed into the template/function
       bikes: Bike
+    });
   });
 });
+
 
 // post the new or edited bike
 router.post('/', (req, res) => {
@@ -40,6 +42,16 @@ router.post('/', (req, res) => {
   });
 });
 
+router.post('/:id/like', async (req, res) => {
+  try {
+    console.log(req.user);
+    await req.user.bikes.push(req.params.id);
+    await req.user.save();
+    res.redirect('/users');
+  } catch (error) {
+    console.log(error);
+  }
+})
 // VERSION 1
 //display the create page for when creating a new username
 router.get('/new', (req, res) => {
@@ -52,11 +64,6 @@ router.get('/new', (req, res) => {
   });
 });
 
-// display the show page for the corresponding user/username
-router.get('/:id', (req, res) => {
-  res.render('bikes/show.ejs', {
-    bikes: theseBikes
-  });
 
 // VERSION 2
 // router.get('/new', (req, res) => {
@@ -94,6 +101,7 @@ router.get('/:id/edit', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
+  console.log(req.body, " this is req.body in the put route")
   Bike.findByIdAndUpdate(req.params.id, req.body, (err, updatedBike) => {
     res.redirect("/bikes");
   })
@@ -109,14 +117,13 @@ router.put('/:id', (req, res) => {
 // });
 
 router.delete('/:id', async (req, res) => {
-  try
-  {
+  try {
     await Bike.findByIdAndRemove(req.params.id);
     console.log(' Bike has been deleted');
     res.redirect('/bikes');
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-})
+});
 
 module.exports = router;

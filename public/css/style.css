@@ -6,17 +6,14 @@
 	justify-content: center;
 	text-align: center;
 }
-.bar {
-	background-color: #ade550;
-}
-
 .navbar-brand {
-	background: url('/images/test3.png'); 
-	height: 100px;
+	background: url('/images/triangles3.png'); 
+	height: 83px;
 	width: 100px;
 	background-repeat: no-repeat;
+	margin-top: 3px;
 }
-
+/*
 .hero {
 	background: url('/images/bikephoto.png');
 	height: 450px;
@@ -26,10 +23,15 @@
 	justify-content: center;
 	margin-left: 120px;
 	margin-bottom: 20px;
-}
+}*/
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.listScroll {
+ height: 400px;
+ overflow-y: scroll;
 }

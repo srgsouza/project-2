@@ -20,7 +20,8 @@ const UserSchema = new mongoose.Schema({
     minlength: 6
   },
   displayname: String,
-  trails: [{type:Schema.Types.ObjectId, ref: 'Trail'}]
+  trails: [{type:Schema.Types.ObjectId, ref: 'Trail'}],
+  bikes: [{ type: Schema.Types.ObjectId, ref: 'Bike' }]
 });
 
 UserSchema.methods.validPassword = async function (password) {
