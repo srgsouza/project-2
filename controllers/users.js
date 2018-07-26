@@ -4,7 +4,6 @@ const router = express.Router();
 const passport = require('passport');
 const request = require('request');
 
-
 const User  = require('../models/users');
 const geocode = require('../api/geocode');
 const weather = require('../api/weather');
@@ -16,7 +15,7 @@ router.get('/', async (req, res) => {
     message = req.user.username;
   }
   try {
-    const data = await User.find({}).populate('trails').populate('bikes');
+    const data = await User.find({}).populate('trails').populate('bikes');    
     res.render('users/index.ejs', { 
       "usersList": data,
       message: message
@@ -110,11 +109,11 @@ router.post('/location', (req, res) => {
       });
 
     }
-    // res.render('users/geoinfo.ejs', {
+    // res.render('users/index.ejs', {
     //   location: results.address,
     //   latitude: results.latitude,
     //   longitude: results.longitude,
-
+     
     // });
   });
 })

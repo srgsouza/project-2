@@ -42,7 +42,6 @@ app.use('/users', usersController);
 app.use('/bikes', bikesController);
 app.use('/trails', trailsController);
 
-
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });

@@ -13,27 +13,27 @@ const request = require('request');
 // 	});
 // });
 
-router.get('/', async (req, res) => {
-	try {
-		const data = await Trail.find({});
-		res.render('trails/index.ejs', 
-		{ "trailsList": data });
-	} catch (error) {
-		console.log(error);
-	}
-});
+// router.get('/', async (req, res) => {
+// 	try {
+// 		const data = await Trail.find({});
+// 		res.render('trails/index.ejs', 
+// 		{ "trailsList": data });
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// });
 
-router.get('/new', (req, res) => {
-		res.render('trails/new.ejs')
-});
+// router.get('/new', (req, res) => {
+// 		res.render('trails/new.ejs')
+// });
 
 
-router.post('/', (req, res) => {
-	Trail.create(req.body, (err, createdTrail) => {
-		console.log(createdTrail);
-		res.redirect('/trails')
-	});
-});
+// router.post('/', (req, res) => {
+// 	Trail.create(req.body, (err, createdTrail) => {
+// 		console.log(createdTrail);
+// 		res.redirect('/trails')
+// 	});
+// });
 
 router.get('/search', (req, res) => {
 	let mountainBikeProject = "200320520-bb520cea5200b21d7530c95bf2166f64";
@@ -46,15 +46,22 @@ router.get('/search', (req, res) => {
 	});
 });
 
-router.post('/:id/like', async (req, res) => {
+router.post('/:id/like', async (req, res) => {	
 	try {
-		console.log(req.user);
-		console.log("Got in the post /:id/like route");
-		await req.user.trails.push(req.params.id);
-		await req.user.save();
-		console.log(req.user.trails);
+		const trail = {trailId: req.params.id}; // object to be inserted in the db
+		Trail.create(trail, (err, createdTrail) => {
+			console.log(createdTrail, ' this is the createdTrail');
+		});
+		// Trail.findById(req.params.id);
+		Trail.find({ trailId: req.params.id }, (err, mongoDbTrailId) => {
+			console.log('This is mongoDbTrailId: ' + mongoDbTrailId);
+			 req.user.trails.push(mongoDbTrailId._id);
+			 req.user.save();
+		});
 		
-		res.redirect('/users')
+		// console.log(req.user.trails);
+		
+		res.redirect('/trails')
 	// const likedTrail = await Trail.create(req.user)
 	} catch (error) {
 		console.log(error);

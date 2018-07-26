@@ -34,6 +34,9 @@
 				<%=body.trails[i].low%> </br>
 				<%=body.trails[i].length%> </br>
 			</li>
+							<form action="/trails/<%=body.trails[i].id%>/like" method="POST">
+								<button type="submit" value="<%=body.trails[i].id%>">Save Favorite</button>
+							</form>
 			<%}%>
 			
 			</ul>
