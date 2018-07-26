@@ -15,17 +15,17 @@ router.get('/', async (req, res) => {
     username = req.user.username;
   }
   // console.log(session);
-  
+
   try {
-    const data = await User.find({}).populate('trails').populate('bikes');    
-    res.render('users/index.ejs', { 
+    const data = await User.find({}).populate('trails').populate('bikes');
+    res.render('users/index.ejs', {
       "usersList": data,
       username: username
     });
   } catch (error) {
     console.log(error);
   }
-});  
+});
 
 // create new - Shows the Form
 router.get('/new', (req, res) => {
@@ -63,7 +63,7 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
-// Render user profile TODO 
+// Render user profile TODO
 router.get('/:id/profile', async (req, res) => {
   let username = null;
   if (req.user !== undefined) {
@@ -74,7 +74,7 @@ router.get('/:id/profile', async (req, res) => {
     // const data0 = await User.findOne({username:req.params.})
     const data = await User.findById(req.params.id).populate('trails').populate('bikes');
     console.log(data);
-    
+
     res.render('users/profile.ejs', {
       "usersList": data,
       username: username
@@ -82,7 +82,7 @@ router.get('/:id/profile', async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-});  
+});
 
 // find user by ID and render the show.ejs page
 router.get('/:id', async (req, res) => {
@@ -102,8 +102,8 @@ router.get('/:id', async (req, res) => {
 router.post('/login', (req, res, next) => {
   // passport.authenticate returns a callback function
   // appended: '(res, req, next)' to the function listed on the Passport Docs
-  passport.authenticate('local', { 
-    successRedirect: '/users', 
+  passport.authenticate('local', {
+    successRedirect: '/users',
     failureRedirect: '/users/login'
   }) (req, res, next);
 })

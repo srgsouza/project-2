@@ -10,13 +10,16 @@
   <body>
     <div class="container">
 
-
-    <form action="/bikes" method="post">
-        <input type="text" name="name" /><br/>
-        <input type="text" name="type">
-        <input type="submit" value="Create Bike"/>
-    </form>
+    <div>
+    <% include ../partials/_navbar.ejs %>
     </div>
+    <form action="/bikes" method="post">
+      <input type="text" name="name"><br>
+      <input type="type" name="type"><br>
+      <input type="type" name="price"><br>
+      <input type="type" name="image"><br>
+      <input type="submit" value="Create New Bike">
+    </form>
 
       <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
