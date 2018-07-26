@@ -2,12 +2,8 @@ var passport = require('passport') , LocalStrategy = require('passport-local').S
 const User = require('../models/users');
 
 passport.use(new LocalStrategy(
-    function (username, password, done) {
-        console.log(`INSIDE the Passport STRAtEGY - Trying to login ${username} with ${password} - did work?`);
-        
-        User.findOne({ username: username }, function (err, user) {
-            console.log(`Successfully found user ${user.username}`);
-            
+    function (username, password, done) {        
+        User.findOne({ username: username }, function (err, user) {            
             if (err) { return done(err); }
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
@@ -18,9 +14,7 @@ passport.use(new LocalStrategy(
                 return done(null, false, { message: 'Incorrect password.' });
                 console.log('Incorrect password');
                 
-            }
-            console.log("Everything Worked !!!!");
-            
+            }            
             return done(null, user);
         });
     }
