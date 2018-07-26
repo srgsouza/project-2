@@ -63,6 +63,24 @@ router.get('/:id/edit', async (req, res) => {
   }
 });
 
+// Render user profile TODO 
+router.get('/:name/profile', async (req, res) => {
+  let username = null;
+  if (req.user !== undefined) {
+    username = req.user.username;
+  }
+  // console.log(session);
+  try {
+    const data = await User.findOne({username:req.params.id}).populate('trails').populate('bikes');
+    res.render('users/profile.ejs', {
+      "usersList": data,
+      username: username
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});  
+
 // find user by ID and render the show.ejs page
 router.get('/:id', async (req, res) => {
   try {
@@ -76,54 +94,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Get Geo Location
-router.post('/location', (req, res) => {
-  let username = null;
-  if (req.user !== undefined) {
-    username = req.user.username;
-  }
-  geocode.geocodeAddress(req.body.cityName, (errorMessage, results) => {
-    if (errorMessage) {
-      console.log(errorMessage);
-    } else {
-      // console.log(JSON.stringify(results, undefined, 2));   // 'undefined' is a filtering option, then '2' is the spacing of indentation
-      console.log('Location: ' + results.address);
-      console.log('Latitute: ' + results.latitude);
-      console.log('Longitute: ' + results.longitude);
-      
-      
-      // lat, lng, callback  -
-      weather.getWeather(results.latitude, results.longitude, (errorMessage, weatherResults) => {
-        if (errorMessage) {
-          console.log("Error somewhere");
-          console.log(errorMessage);
-        } else {
-          // console.log(JSON.stringify(weatherResults, undefined, 2));
-          console.log(`It's currently ${weatherResults.temperature} in . It feels like ${weatherResults.apparentTemperature}.`);
-        }
-      });
-
-      // call MTB project api here
-      let mountainBikeProject = "200320520-bb520cea5200b21d7530c95bf2166f64";
-      request({
-        url: `https://www.mtbproject.com/data/get-trails?lat=${results.latitude}&lon=${results.longitude}&maxDistance=10&key=200320520-bb520cea5200b21d7530c95bf2166f64`
-      }, (err, response, body) => {
-        console.log(err);
-        body = JSON.parse(body);
-        res.render('trails/search.ejs',
-          { body: body,
-            username: username });
-      });
-
-    }
-    // res.render('users/index.ejs', {
-    //   location: results.address,
-    //   latitude: results.latitude,
-    //   longitude: results.longitude,
-     
-    // });
-  });
-})
 
 // Login user - using Passport JS
 router.post('/login', (req, res, next) => {

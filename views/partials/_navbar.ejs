@@ -1,4 +1,4 @@
-                    <!-- Navbar  -->
+<!-- Navbar  -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a class="navbar-brand" href="#"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
 			<a class="nav-item nav-link" href="/bikes">Bikes</a>
 			<a class="nav-item nav-link" href="/users">Users</a>
 			<!-- Search bar -->
-			<form class="form-inline search my-2 my-lg-0" id="find-trail-form" method="POST" action="/users/location">
+			<form class="form-inline search my-2 my-lg-0" id="find-trail-form" method="POST" action="/trails/location">
 				<input type="text" name="cityName" id="cityName" class="form-control" placeholder="City Name" required autofocus>
 				<button class="btn search-btn btn-outline-success my-2 my-sm-0" id="find-trail-btn" type="submit">Find Trail</button>
 			</form>
@@ -26,7 +26,7 @@
 					Register
 				</button>
 			<% } else { %>
-				<a class="nav-item nav-link disabled" href="/users"><%=username%></a>
+				<a class="nav-item nav-link " href="/users/<%=username%>/profile"><%=username%></a>
 				<a class="nav-item nav-link" href="/users/logout">Logout</a>
 			<% } %>
 		</div>
@@ -99,24 +99,24 @@
 	</div>
 </div>
 
-		<!-- <button class="btn search btn-outline-success my-2 my-sm-0" id="find-trail" type="submit">Find Trail</button> -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script>
-		            const $btn = $('#find-trail-btn');
-		            $btn.on('click', (event) => {
-						event.preventDefault();
-		                $('#find-trail-form').submit();
-		            })
+<!-- <button class="btn search btn-outline-success my-2 my-sm-0" id="find-trail" type="submit">Find Trail</button> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+			const $btn = $('#find-trail-btn');
+			$btn.on('click', (event) => {
+				event.preventDefault();
+				$('#find-trail-form').submit();
+			})
 
-		            // $btn.on('click', (event) => {
-		            //     event.preventDefault();
-		            //     const location = $('#find-trail-input').val();
-		            //     console.log(location);
-		            //     $.post('/users/location', {"location":location}, (err, response) => {
-		            //         console.log(response);
-		            //         $('body').append(response);
-		            //     })
-		            //     // console.log('Got clicked');
-		            //     $('body').append(location)
-		            // })
-		</script>
+			// $btn.on('click', (event) => {
+			//     event.preventDefault();
+			//     const location = $('#find-trail-input').val();
+			//     console.log(location);
+			//     $.post('/users/location', {"location":location}, (err, response) => {
+			//         console.log(response);
+			//         $('body').append(response);
+			//     })
+			//     // console.log('Got clicked');
+			//     $('body').append(location)
+			// })
+</script>
