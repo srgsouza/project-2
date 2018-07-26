@@ -1,4 +1,4 @@
-<!-- Navbar  -->
+                    <!-- Navbar  -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a class="navbar-brand" href="#"></a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,3 +93,25 @@
 		</div>
 	</div>
 </div>
+
+		<!-- <button class="btn search btn-outline-success my-2 my-sm-0" id="find-trail" type="submit">Find Trail</button> -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>
+		            const $btn = $('#find-trail-btn');
+		            $btn.on('click', (event) => {
+						event.preventDefault();
+		                $('#find-trail-form').submit();
+		            })
+
+		            // $btn.on('click', (event) => {
+		            //     event.preventDefault();
+		            //     const location = $('#find-trail-input').val();
+		            //     console.log(location);
+		            //     $.post('/users/location', {"location":location}, (err, response) => {
+		            //         console.log(response);
+		            //         $('body').append(response);
+		            //     })
+		            //     // console.log('Got clicked');
+		            //     $('body').append(location)
+		            // })
+		</script>
