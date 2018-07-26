@@ -43,9 +43,9 @@ app.use('/bikes', bikesController);
 app.use('/trails', trailsController);
 
 
-// app.get('/', (req, res) => {
-// 	res.render('index.ejs');
-// });
+app.get('/', (req, res) => {
+	res.render('index.ejs');
+});
 
 
 app.listen(port, () => {

@@ -30,6 +30,35 @@
 	</div
 
 
+
+
+
+
+
+		</div>
+	<ul>
+
+			<% for (let i = 0; i < body.trails.length; i++) {%> <li>
+ 				<h2><%=body.trails[i].name%></h2> 
+ 				<p>
+ 				<%=body.trails[i].summary%></br> 
+ 				<%=body.trails[i].difficulty%>  </br>
+ 				<%=body.trails[i].location%> </br>
+ 				<%=body.trails[i].length%> </br>
+ 				<%=body.trails[i].ascent%> </br>
+ 				<%=body.trails[i].descent%> </br>
+ 				<%=body.trails[i].high%> </br>
+ 				<%=body.trails[i].low%> </br> 				
+ 				<%=body.trails[i].length%> </br>
+			</p>
+ 			</li>
+		
+ 			<%}%>
+			
+ 			</ul>
+ 		 	 </div>
+
+
 <!-- jquery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- bootstrap bundle -->

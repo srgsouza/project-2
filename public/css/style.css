@@ -40,7 +40,7 @@ ul {
 }
 
 .carousel {
-    height: 500px;
+    height: 400px;
     margin-bottom: 60px;
 }
 /* Since positioning the image, we need to help out the caption */
@@ -67,6 +67,19 @@ ul {
         line-height: 1.4;
     }
 }
-img {
-    background: red;
+
+.card-group {
+ 
+    justify-content: center;
+
+}
+.card-body {
+     text-align: center;
+     align-content: center;
+     height: 415px;
+     width: 340px;
+     border-radius: 60px;
+     border: 2px solid rgba(133,191,70, 0.9);
+     margin: 10px;
+
 }
