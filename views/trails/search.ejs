@@ -42,21 +42,19 @@
  					Elevation High: <%=body.trails[i].high%> </br>
  					Elevation Low: <%=body.trails[i].low%> </br> 		
     			</p>
+          <form action="/trails/<%=body.trails[i].id%>/like" method="POST">
+            <button type="submit" value="<%=body.trails[i].id%>">Save Favorite</button>
+          </form>
     		</div>
     	</div>
     <%}%>
  	</div>
  </div>
  	
-
-
-
- 
-
  </div>
 
 
-	
+
 
 			
 

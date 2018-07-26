@@ -9,17 +9,15 @@
   
     <div class="container">
         <% include ../partials/_navbar.ejs %>
-        <h4>Logged in User: <%=message%> </h4>
+        <h4>Logged in User: <%=username%> </h4>
         <h1>Users - All Users</h1>
         <h3> Todo List for the Users functionality / flow</h3>
         <ul>
-            <li>Password not hashed when user/:id/edit route </li>
-            <li>Adjust routes to redirect non-logged users</li>
-            <li>Place "Login" and "Register" button on the navbar or header of the site</li>
-            <li>Make Login and Register disappear after user logs in (replace with logout button)</li> 
+            <li>Set username for all routes (needed for _navbar.ejs</li>
+            <li>remove "let username = ... from user router.post /location and /</li>
+            <li>Add password reset/recovery </li>
             <li>Implement strategy for admin vs regular user.</li>
             <li>Implement oauth Google etc </li>
-            <li>Save session to db?</li>
         </ul>
 
         
@@ -42,26 +40,13 @@
         <% } %>
         </br>
         </br>
-
-        <form class="form-signin" method="POST" action="/users/location">
-            <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Locate a Trail</h1>
-            <label for="cityName" class="sr-only">Enter City Name</label>
-            <input type="text" name="cityName" id="cityName" class="form-control" placeholder="City Name" required autofocus>
-            <div class="checkbox mb-3">
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-        </form>
-
             <br>
             <br>
 
-    </div>
-    <!-- jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- bootstrap bundle -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 

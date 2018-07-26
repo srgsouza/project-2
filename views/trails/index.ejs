@@ -36,8 +36,8 @@
 					<%}%>
 				</li>
 			</br>
-				<form action="/trails/<%=trailsList[i].id%>/like" method="POST">
-					<button type="submit" value="<%=trailsList[i].id%>">Save Favorite</button>
+				<form action="/trails/<%=body.trails[i].id%>/like" method="POST">
+					<button type="submit" value="<%=body.trails[i].id%>">Save Favorite</button>
 				</form>
 			</br>
 			<%}%>
