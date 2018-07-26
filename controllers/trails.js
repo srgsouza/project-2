@@ -46,23 +46,18 @@ router.get('/search', (req, res) => {
 	});
 });
 
+// Get trail id (from mtb project api). Insert in MongoDB, also update trails array of user 
 router.post('/:id/like', async (req, res) => {	
 	try {
 		const trail = {trailId: req.params.id}; // object to be inserted in the db
-		Trail.create(trail, (err, createdTrail) => {
+		await Trail.create(trail, (err, createdTrail) => {
 			console.log(createdTrail, ' this is the createdTrail');
 		});
-		// Trail.findById(req.params.id);
-		Trail.find({ trailId: req.params.id }, (err, mongoDbTrailId) => {
-			console.log('This is mongoDbTrailId: ' + mongoDbTrailId);
-			 req.user.trails.push(mongoDbTrailId._id);
+		await Trail.findOne({ trailId: req.params.id }, (err, mongoDbTrail) => {
+			 req.user.trails.push(mongoDbTrail._id);
 			 req.user.save();
 		});
-		
-		// console.log(req.user.trails);
-		
-		res.redirect('/trails')
-	// const likedTrail = await Trail.create(req.user)
+		res.redirect('/users')
 	} catch (error) {
 		console.log(error);
 		

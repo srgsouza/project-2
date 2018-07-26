@@ -16,7 +16,7 @@
 				<button class="btn search-btn btn-outline-success my-2 my-sm-0" id="find-trail-btn" type="submit">Find Trail</button>
 			</form>
 			<!-- Display login/register button if user is not logged in, otherwise display the logout button -->
-			<% if (message === null) { %>
+			<% if (username === null) { %>
 				<!-- Button for Login modal -->
 				<button type="button" class="btn btn-link" data-toggle="modal" data-target="#loginModal">
 					Login
@@ -26,7 +26,7 @@
 					Register
 				</button>
 			<% } else { %>
-				<a class="nav-item nav-link disabled" href="/users"><%=message%></a>
+				<a class="nav-item nav-link disabled" href="/users"><%=username%></a>
 				<a class="nav-item nav-link" href="/users/logout">Logout</a>
 			<% } %>
 		</div>

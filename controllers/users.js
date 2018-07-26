@@ -10,15 +10,17 @@ const weather = require('../api/weather');
 
 // display the index page - show all users
 router.get('/', async (req, res) => {
-  let message = null;
+  let username = null;
   if (req.user !== undefined) {
-    message = req.user.username;
+    username = req.user.username;
   }
+  // console.log(session);
+  
   try {
     const data = await User.find({}).populate('trails').populate('bikes');    
     res.render('users/index.ejs', { 
       "usersList": data,
-      message: message
+      username: username
     });
   } catch (error) {
     console.log(error);
@@ -76,6 +78,10 @@ router.get('/:id', async (req, res) => {
 
 // Get Geo Location
 router.post('/location', (req, res) => {
+  let username = null;
+  if (req.user !== undefined) {
+    username = req.user.username;
+  }
   geocode.geocodeAddress(req.body.cityName, (errorMessage, results) => {
     if (errorMessage) {
       console.log(errorMessage);
@@ -105,7 +111,8 @@ router.post('/location', (req, res) => {
         console.log(err);
         body = JSON.parse(body);
         res.render('trails/search.ejs',
-          { body: body });
+          { body: body,
+            username: username });
       });
 
     }
