@@ -20,8 +20,8 @@ for(let i = 0; i < bikes.length; i++) {
 
 require('./passport/serializing');
 require('./passport/local-config');
-const geocode = require('../api/geocode');
-const weather = require('../api/weather');
+const geocode = require('./api/geocode');
+const weather = require('./api/weather');
 
 const app = express();
 const port = 3000;
