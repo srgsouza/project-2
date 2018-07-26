@@ -8,46 +8,25 @@
 <body>
   
     <div class="container">
-        <% include ../partials/_navbar.ejs %>
-        <h4>Logged in User: <%=username%> </h4>
-        <h1>Users - All Users</h1>
-        <h3> Todo List for the Users functionality / flow</h3>
-        <ul>
-            <li>Set username for all routes (needed for _navbar.ejs</li>
-            <li>remove "let username = ... from user router.post /location and /</li>
-            <li>Add password reset/recovery </li>
-            <li>Implement strategy for admin vs regular user.</li>
-            <li>Implement oauth Google etc </li>
-        </ul>
-
-        
+        <% include ../partials/_navbar.ejs %>     
             <h4>Username (email): <a href="/users/<%= usersList.id %>">  <%= usersList.username %>  </a> </h4>
             <h4> Display Name: <%= usersList.displayname %> </h4>   
-            Liked Trails: 
+            Liked Trails: <br>
             <% for (let j = 0; j < usersList.trails.length; j++ ) { %>
-                <h4> <%=usersList.trails[j].name %></h4>
+                <a href="https://www.mtbproject.com/trail/<%=usersList.trails[j].trailId%>"> <%=usersList.trails[j].trailId %> </a>
+                <br>
             <% } %>
             <br>
             Liked Bikes:
             <% for (let k = 0; k < usersList.bikes.length; k++ ) { %>
                 <h4> <%=usersList.bikes[k].name %></h4>
             <% } %>
+            <br>
                          
-            <a href="/users/<%= usersList[i].id %>/edit"><button> Edit</button></a>
+            <a href="/users/<%= usersList.id %>/edit"><button> Edit</button></a>
 
         </br>
         </br>
-
-        <form class="form-signin" method="POST" action="/users/location">
-            <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Locate a Trail</h1>
-            <label for="cityName" class="sr-only">Enter City Name</label>
-            <input type="text" name="cityName" id="cityName" class="form-control" placeholder="City Name" required autofocus>
-            <div class="checkbox mb-3">
-            </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-        </form>
 
             <br>
             <br>

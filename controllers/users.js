@@ -64,14 +64,17 @@ router.get('/:id/edit', async (req, res) => {
 });
 
 // Render user profile TODO 
-router.get('/:name/profile', async (req, res) => {
+router.get('/:id/profile', async (req, res) => {
   let username = null;
   if (req.user !== undefined) {
     username = req.user.username;
   }
   // console.log(session);
   try {
-    const data = await User.findOne({username:req.params.id}).populate('trails').populate('bikes');
+    // const data0 = await User.findOne({username:req.params.})
+    const data = await User.findById(req.params.id).populate('trails').populate('bikes');
+    console.log(data);
+    
     res.render('users/profile.ejs', {
       "usersList": data,
       username: username

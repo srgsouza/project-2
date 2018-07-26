@@ -109,13 +109,15 @@ router.post('/:id/like', async (req, res) => {
 			console.log(createdTrail, ' this is the createdTrail');
 		});
 		await Trail.findOne({ trailId: req.params.id }, (err, mongoDbTrail) => {
+			console.log(mongoDbTrail);
+			
 			 req.user.trails.push(mongoDbTrail._id);
+			//  req.user.trails.push(mongoDbTrail.name);
 			 req.user.save();
 		});
 		res.redirect('/users')
 	} catch (error) {
-		console.log(error);
-		
+		console.log(error);		
 	}
 })
 

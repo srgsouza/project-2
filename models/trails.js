@@ -6,6 +6,7 @@ const trailSchema = new mongoose.Schema({
 	// location: {type: String, required: true},
 	// distance: Number,
 	// level: {type: String, required: true}
+	name: String,
 	trailId: String
 });
 

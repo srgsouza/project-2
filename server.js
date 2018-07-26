@@ -33,6 +33,12 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());  // ** must be placed after session
 app.use(passport.session());
+app.use((req, res, next) => { 
+  // res.locals is available on every route. Undefined initially, then set after user logs in
+  // templates (ie ejs) will understand 'user' of req.locals
+  res.locals.user = req.user; 
+  next();
+});
 // require the controller(s)
 const usersController = require('./controllers/users');
 const bikesController = require('./controllers/bikes');

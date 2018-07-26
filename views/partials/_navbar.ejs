@@ -10,13 +10,9 @@
 			<a class="nav-item nav-link" href="/trails/search">Trails</a>
 			<a class="nav-item nav-link" href="/bikes">Bikes</a>
 			<a class="nav-item nav-link" href="/users">Users</a>
-			<!-- Search bar -->
-			<form class="form-inline search my-2 my-lg-0" id="find-trail-form" method="POST" action="/trails/location">
-				<input type="text" name="cityName" id="cityName" class="form-control" placeholder="City Name" required autofocus>
-				<button class="btn search-btn btn-outline-success my-2 my-sm-0" id="find-trail-btn" type="submit">Find Trail</button>
-			</form>
+
 			<!-- Display login/register button if user is not logged in, otherwise display the logout button -->
-			<% if (username === null) { %>
+			<% if (!user) { %>
 				<!-- Button for Login modal -->
 				<button type="button" class="btn btn-link" data-toggle="modal" data-target="#loginModal">
 					Login
@@ -26,9 +22,14 @@
 					Register
 				</button>
 			<% } else { %>
-				<a class="nav-item nav-link " href="/users/<%=username%>/profile"><%=username%></a>
+				<a class="nav-item nav-link " href="/users/<%=user.id%>/profile"><%=username%></a>
 				<a class="nav-item nav-link" href="/users/logout">Logout</a>
 			<% } %>
+			<!-- Search bar -->
+			<form class="form-inline search my-2 my-lg-0" id="find-trail-form" method="POST" action="/trails/location">
+				<input type="text" name="cityName" id="find-trail-input" class="form-control" placeholder="City Name" required autofocus>
+				<button class="btn search-btn btn-outline-success my-2 my-sm-0" id="find-trail-btn" type="submit">Find Trail</button>
+			</form>
 		</div>
 	</div>
 </nav>
@@ -99,8 +100,7 @@
 	</div>
 </div>
 
-<!-- <button class="btn search btn-outline-success my-2 my-sm-0" id="find-trail" type="submit">Find Trail</button> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 			const $btn = $('#find-trail-btn');
 			$btn.on('click', (event) => {
@@ -108,11 +108,11 @@
 				$('#find-trail-form').submit();
 			})
 
-			// $btn.on('click', (event) => {
+			// $btn.on('submit', (event) => {
 			//     event.preventDefault();
 			//     const location = $('#find-trail-input').val();
-			//     console.log(location);
-			//     $.post('/users/location', {"location":location}, (err, response) => {
+			//     console.log('Location is ' + location);
+			//     $.post('/trails/location', {"location":location}, (err, response) => {
 			//         console.log(response);
 			//         $('body').append(response);
 			//     })
