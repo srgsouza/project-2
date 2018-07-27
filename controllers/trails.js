@@ -81,7 +81,6 @@ router.post('/location', (req, res) => {
 			});
 
 		}
-
 	});
 })
 
