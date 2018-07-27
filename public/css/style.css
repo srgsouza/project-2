@@ -7,7 +7,7 @@
 	text-align: center;
 }
 .navbar-brand {
-	background: url('/images/triangles3.png'); 
+	background: url('/images/triangles3.png');
 	height: 83px;
 	width: 100px;
 	background-repeat: no-repeat;
@@ -23,13 +23,13 @@ ul {
 .listScroll {
  height: 600px;
  overflow-y: scroll;
- 
+
 }
 
 .main {
  border-radius: 67px;
  border: 4px solid rgba(133,191,70, 0.9);
- margin-top: 50px;	
+ margin-top: 50px;
 }
 
 .stats {
@@ -69,7 +69,7 @@ ul {
 }
 
 .card-group {
- 
+
     justify-content: center;
 
 }
@@ -82,4 +82,10 @@ ul {
      border: 2px solid rgba(133,191,70, 0.9);
      margin: 10px;
 
+}
+
+.bikeImage {
+	justify-content: center;
+	width: 200px;
+	height: 200px;
 }
