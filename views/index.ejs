@@ -18,6 +18,9 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img class="d-block w-100" src="/images/mapcover.jpg" alt="First slide" width="640" height="560">
+        <div class="carousel-caption">
+          <h1>EXPLORE</h1>
+        </div>
     </div>
     <div class="carousel-item">
       <img class="d-block w-100" src="/images/spokes.jpg" alt="Second slide" width="640" height="560">
@@ -34,6 +37,12 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+    <div class="search">
+        <form class="form-inline search my-2 my-lg-0" id="find-trail-form" method="POST" action="/trails/location">
+        <input type="text" name="cityName" id="find-trail-input" class="form-control" placeholder="City Name" required autofocus>
+        <button class="btn search-btn btn-outline-success my-2 my-sm-0" id="find-trail-btn" type="submit">Find Trail</button>
+      </form>
+    </div>
 </div>
 
 

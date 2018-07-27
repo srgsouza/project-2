@@ -46,6 +46,8 @@ ul {
 /* Since positioning the image, we need to help out the caption */
  .carousel-caption {
     z-index: 10;
+    margin-bottom: 220px;
+    font-size: 80px;
 }
 /* Declare heights because of positioning of img element */
  .carousel .item {
@@ -68,6 +70,12 @@ ul {
     }
 }
 
+.announcement {
+    font-weight: bold;
+    margin: 30px;
+    background-color: #FF8C00;
+}
+
 .card-group {
 
     justify-content: center;
@@ -81,11 +89,24 @@ ul {
      border-radius: 60px;
      border: 2px solid rgba(133,191,70, 0.9);
      margin: 10px;
-
+     background: rgba(133,191,70, 0.7)
+}
+.card-title {
+   font-weight: bold;
+   color: #080808;
+}
+.card-text {
+    color: #383838;
 }
 
 .bikeImage {
 	justify-content: center;
 	width: 200px;
 	height: 200px;
+}
+
+.search {
+    justify-content: center;
+    align-self: center;
+    margin: 20px;
 }
