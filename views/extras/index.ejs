@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>''</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+    <% include ../partials/_navbar.ejs %>
+    <br>
+    <br>
+        <!-- Search bar -->
+        <form class="form-inline search my-2 my-lg-0" id="test-api-form" method="POST" action="/extras">
+            <input type="text" name="cityName" id="test-api-input" class="form-control" placeholder="City Name" required autofocus>
+            <button class="btn search-btn btn-outline-success my-2 my-sm-0" id="test-api-btn" type="submit">Test APIs</button>
+        </form>
+        <div>
+            <img src="<%=googleMapInfo%>" alt="">
+        </div>
+                
+    <script>
+        // const $btn = $('#find-trail-btn');
+        // $btn.on('click', (event) => {
+        //     event.preventDefault();
+        //     $('#find-trail-form').submit();
+        // })
+
+        const $form = $('#find-trail-form');
+        $btn.on('submit', (event) => {
+            event.preventDefault();
+            const location = $('#find-trail-input').val();
+            console.log('Location is ' + location);
+            $.post('/extras', {"location":location}, (err, response) => {
+                console.log(response);
+                $('body').append(response);
+            })
+            // console.log('Got clicked');
+            $('body').append(location)
+        })
+    </script>
+<!-- jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- bootstrap bundle -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+</body>
+</html>

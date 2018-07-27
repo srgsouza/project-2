@@ -43,10 +43,10 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());  // ** must be placed after session
 app.use(passport.session());
-app.use((req, res, next) => { 
+app.use((req, res, next) => {
   // res.locals is available on every route. Undefined initially, then set after user logs in
   // templates (ie ejs) will understand 'user' of req.locals
-  res.locals.user = req.user; 
+  res.locals.user = req.user;
   next();
 });
 // require the controller(s)
@@ -67,12 +67,61 @@ app.get('/', (req, res) => {
 });
 
 app.get('/extras', (req, res) => {
-    res.render('extras/extra.ejs', {
-      location: results.address,
-      latitude: results.latitude,
-      longitude: results.longitude,
+    res.render('extras/index.ejs', {
     });
-})
+});
+
+app.post('/extras', (req, res) => {
+  let username = null;
+  if (req.user !== undefined) {
+    username = req.user.username;
+  }
+  geocode.geocodeAddress(req.body.cityName, (errorMessage, results) => {
+    if (errorMessage) {
+      console.log(errorMessage);
+    } else {
+      // console.log(JSON.stringify(results, undefined, 2));   // 'undefined' is a filtering option, then '2' is the spacing of indentation
+      console.log('Location: ' + results.address);
+      console.log('Latitute: ' + results.latitude);
+      console.log('Longitute: ' + results.longitude);
+
+
+      // lat, lng, callback  -
+      weather.getWeather(results.latitude, results.longitude, (errorMessage, weatherResults) => {
+        if (errorMessage) {
+          console.log("Error somewhere");
+          console.log(errorMessage);
+        } else {
+          // console.log(JSON.stringify(weatherResults, undefined, 2));
+          console.log(`It's currently ${weatherResults.temperature} in . It feels like ${weatherResults.apparentTemperature}.`);
+        }
+      });
+
+      // call MTB project api here
+      let mountainBikeProject = "200320520-bb520cea5200b21d7530c95bf2166f64";
+      request({
+        url: `https://www.mtbproject.com/data/get-trails?lat=${results.latitude}&lon=${results.longitude}&maxDistance=10&key=200320520-bb520cea5200b21d7530c95bf2166f64`
+      }, (err, response, body) => {
+        console.log(err);
+        // body = JSON.parse(body);
+        const latlon = results.latitude + "," + results.longitude;
+        console.log(latlon);
+        
+        let url = `https://maps.googleapis.com/maps/api/staticmap?center=${latlon}&zoom=14&size=400x300&key=AIzaSyBuR_F9fvqIunopC4343MFtTSxRTtOHbNw`;
+        console.log(url);
+        
+        res.render('extras/index.ejs',
+          {
+            // body: body,
+            // username: username,
+            // lat: results.latitude,
+            // long: results.longitude,
+            googleMapInfo: url
+          });
+      });
+    }
+  });
+});
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
