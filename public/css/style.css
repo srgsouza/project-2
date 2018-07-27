@@ -73,23 +73,35 @@ ul {
 .announcement {
     font-weight: bold;
     margin: 30px;
-    background-color: #FF8C00;
+ 
 }
 
-.card-group {
-
-    justify-content: center;
-
+.card-img-top {
+    height: 200px;
+    width: 250px;
 }
-.card-body {
+
+.card-group-profile {
+justify-content: center;
+}
+
+.card-body-profile {
      text-align: center;
      align-content: center;
      height: 415px;
      width: 340px;
      border-radius: 60px;
-     border: 2px solid rgba(133,191,70, 0.9);
+     margin-top: 70px;
+     background: rgba(133,191,70, 0.7) 
+}
+
+.card-body {
+     text-align: center;
+     align-content: center;
+     height: 600px;
+     width: 340px;
      margin: 10px;
-     background: rgba(133,191,70, 0.7)
+     
 }
 .card-title {
    font-weight: bold;
