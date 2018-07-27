@@ -18,12 +18,10 @@ for(let i = 0; i < bikes.length; i++) {
   Bike.create(bikes[i]);
 }
 
-
-require('./db/db');   // runs the db.js file
-// require('./db/mongo_session');
-//const store = require('./db/mongo_session'); // mongo session config file
 require('./passport/serializing');
 require('./passport/local-config');
+const geocode = require('../api/geocode');
+const weather = require('../api/weather');
 
 const app = express();
 const port = 3000;
@@ -68,6 +66,13 @@ app.get('/', (req, res) => {
 	res.render('index.ejs');
 });
 
+app.get('/extras', (req, res) => {
+    res.render('extras/extra.ejs', {
+      location: results.address,
+      latitude: results.latitude,
+      longitude: results.longitude,
+    });
+})
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

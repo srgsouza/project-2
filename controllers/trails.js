@@ -81,12 +81,7 @@ router.post('/location', (req, res) => {
 			});
 
 		}
-		// res.render('users/index.ejs', {
-		//   location: results.address,
-		//   latitude: results.latitude,
-		//   longitude: results.longitude,
 
-		// });
 	});
 })
 
@@ -106,13 +101,9 @@ router.post('/:id/like', async (req, res) => {
 	try {
 		const trail = {trailId: req.params.id}; // object to be inserted in the db
 		await Trail.create(trail, (err, createdTrail) => {
-			console.log(createdTrail, ' this is the createdTrail');
 		});
-		await Trail.findOne({ trailId: req.params.id }, (err, mongoDbTrail) => {
-			console.log(mongoDbTrail);
-			
+		await Trail.findOne({ trailId: req.params.id }, (err, mongoDbTrail) => {			
 			 req.user.trails.push(mongoDbTrail._id);
-			//  req.user.trails.push(mongoDbTrail.name);
 			 req.user.save();
 		});
 		res.redirect('/users')
