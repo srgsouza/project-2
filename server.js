@@ -8,7 +8,6 @@ const session = require('express-session'); // allow storage of individual piece
 const passport = require('passport');
 
 require('dotenv').config();
-<<<<<<< HEAD
 require('./db/db');   // runs the db.js file
 const {store} = require('./db/mongo_session'); // mongo session config file
 
@@ -19,11 +18,10 @@ for(let i = 0; i < bikes.length; i++) {
   Bike.create(bikes[i]);
 }
 
-=======
-require('./db/db');   // runs the db.js file 
+
+require('./db/db');   // runs the db.js file
 // require('./db/mongo_session');
-const store = require('./db/mongo_session'); // mongo session config file
->>>>>>> 2791b323c3cccdb5bcc5d6833f0b0c43ec31e556
+//const store = require('./db/mongo_session'); // mongo session config file
 require('./passport/serializing');
 require('./passport/local-config');
 
@@ -47,10 +45,10 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());  // ** must be placed after session
 app.use(passport.session());
-app.use((req, res, next) => { 
+app.use((req, res, next) => {
   // res.locals is available on every route. Undefined initially, then set after user logs in
   // templates (ie ejs) will understand 'user' of req.locals
-  res.locals.user = req.user; 
+  res.locals.user = req.user;
   next();
 });
 // require the controller(s)
