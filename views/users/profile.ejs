@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Users</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-<!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
+    <meta charset="utf-8">
+    <title>Yew Pedal</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
 </head>
 <body>
   
     <div class="container">
-        <% include ../partials/_navbar.ejs %>     
-            <h4>Username (email): <a href="/users/<%= usersList.id %>">  <%= usersList.username %>  </a> </h4>
-            <h4> Display Name: <%= usersList.displayname %> </h4>   
-            Liked Trails: <br>
-            <% for (let j = 0; j < usersList.trails.length; j++ ) { %>
-                <a href="https://www.mtbproject.com/trail/<%=usersList.trails[j].trailId%>"> <%=usersList.trails[j].trailId %> </a>
-                <br>
-            <% } %>
-            <br>
-            Liked Bikes:
-            <% for (let k = 0; k < usersList.bikes.length; k++ ) { %>
-                <h4> <%=usersList.bikes[k].name %></h4>
-            <% } %>
-            <br>
-                         
-            <a href="/users/<%= usersList.id %>/edit"><button> Edit</button></a>
+        <% include ../partials/_navbar.ejs %>    
 
-        </br>
-        </br>
+        <div class="row card-group">
+ 			<div class="col-6-card" style="width: 27rem";>
+  			    <div class="card-body">
+                    <h5 class="card-title"><small>Display Name:</small> <%= usersList.displayname %> </h5>
+                    <h5 class="card-title"><small>Email (username):</small> <%= usersList.username %> </h5>
+                    <p class="card-text">
+                        <h5 class="card-title">Liked Trails</h5>
+                        <% for (let j = 0; j < usersList.trails.length; j++ ) { %>
+                            <a href="https://www.mtbproject.com/trail/<%=usersList.trails[j].trailId%>"> <%=usersList.trails[j].trailId %> </a>
+                            <br>
+                        <% } %>
+                        <br>
+                        <h5 class="card-title">Liked Bikes</h5>
+                        <% for (let k = 0; k < usersList.bikes.length; k++ ) { %>
+                            <h4> <%=usersList.bikes[k].name %></h4>
+                        <% } %>
+                        <br>
+                                    
+                        <a href="/users/<%= usersList.id %>/edit"><button> Edit User Profile</button></a>
+                    </p>
+                </div>
+            </div>
+        </div>
 
-            <br>
-            <br>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- bootstrap bundle -->

@@ -40,7 +40,7 @@ router.get('/login', function (req, res) {
 // logout
 router.get('/logout', function (req, res) {
   req.logout();
-  res.redirect('/users');
+  res.redirect('/');
 });
 
 router.get('/logged', (req, res) => {
@@ -103,7 +103,7 @@ router.post('/login', (req, res, next) => {
   // passport.authenticate returns a callback function
   // appended: '(res, req, next)' to the function listed on the Passport Docs
   passport.authenticate('local', {
-    successRedirect: '/users',
+    successRedirect: '/',
     failureRedirect: '/users/login'
   }) (req, res, next);
 })
