@@ -76,6 +76,10 @@ app.post('/extras', (req, res) => {
   if (req.user !== undefined) {
     username = req.user.username;
   }
+  console.log('Got in the /extra post route');
+  console.log(req.body.cityName);
+  
+  
   geocode.geocodeAddress(req.body.cityName, (errorMessage, results) => {
     if (errorMessage) {
       console.log(errorMessage);

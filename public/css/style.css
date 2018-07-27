@@ -1,11 +1,12 @@
 .container {
 	font-family: 'Lato', sans-serif;
-	background-color: #DCDCDC;
+    background-color: #DCDCDC;
 	height: 800px;
 	width: 500px;
 	justify-content: center;
 	text-align: center;
 }
+
 .navbar-brand {
 	background: url('/images/triangles3.png');
 	height: 83px;
