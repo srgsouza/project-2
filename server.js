@@ -51,15 +51,15 @@ app.use((req, res, next) => {
 });
 // require the controller(s)
 const usersController = require('./controllers/users');
-const bikesController = require('./controllers/bikes');
+// const bikesController = require('./controllers/bikes');
 const trailsController = require('./controllers/trails');
 
-// app.use('/users', usersController);
-app.use('/bikes', bikesController);
-// app.use('/trails', trailsController);
+app.use('/users', usersController);
+// app.use('/bikes', bikesController);
+app.use('/trails', trailsController);
 
 app.use('/users', usersController);
-app.use('/bikes', bikesController);
+// app.use('/bikes', bikesController);
 app.use('/trails', trailsController);
 
 app.get('/', (req, res) => {
